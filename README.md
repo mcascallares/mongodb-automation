@@ -111,8 +111,8 @@ We can deploy the same idea described in the point below but using a single entr
         image: mcascallares/mongodb-automation:latest
         command: >
             --mmsBaseUrl https://mms.mongodb.com
-            --mmsGroupId=548e5b9ce4b04a60f3826b77
-            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+            --mmsGroupId=<your_mms_group_id>
+            --mmsApiKey=<your_mms_api_key>
         hostname: mongod1.mongodb-automation.dev.docker
         ports:
             - 27017:2700
@@ -124,8 +124,8 @@ We can deploy the same idea described in the point below but using a single entr
         image: mcascallares/mongodb-automation:latest
         command: >
             --mmsBaseUrl https://mms.mongodb.com
-            --mmsGroupId=548e5b9ce4b04a60f3826b77
-            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+            --mmsGroupId=<your_mms_group_id>
+            --mmsApiKey=<your_mms_api_key>
         hostname: mongod2.mongodb-automation.dev.docker
         ports:
             - 27018:2700
@@ -137,8 +137,8 @@ We can deploy the same idea described in the point below but using a single entr
         image: mcascallares/mongodb-automation:latest
         command: >
             --mmsBaseUrl https://mms.mongodb.com
-            --mmsGroupId=548e5b9ce4b04a60f3826b77
-            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+            --mmsGroupId=<your_mms_group_id>
+            --mmsApiKey=<your_mms_api_key>
         hostname: mongod3.mongodb-automation.dev.docker
         ports:
             - 27019:2700
