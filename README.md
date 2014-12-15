@@ -34,21 +34,21 @@ To run across multiple containers you need some discovery mechanism to provide c
 In this example I will use [Skydock](https://github.com/crosbymichael/skydock) to provide DNS resolution. The DNS server will be listening on 172.17.42.1:53.
 
     # running a DNS container with Skydns
-    docker run -d
-        -p 172.17.42.1:53:53/udp
-        --name skydns crosbymichael/skydns
-        -nameserver 8.8.8.8:53
+    docker run -d \
+        -p 172.17.42.1:53:53/udp \
+        --name skydns crosbymichael/skydns \
+        -nameserver 8.8.8.8:53 \
         -domain docker
 
 
     # running Skydock container to hook docker events with DNS updates
-    docker run -d
-        -v /var/run/docker.sock:/docker.sock
-        --name skydock crosbymichael/skydock
-        -ttl 30
-        -environment dev
-        -s /docker.sock
-        -domain docker
+    docker run -d \
+        -v /var/run/docker.sock:/docker.sock \
+        --name skydock crosbymichael/skydock \
+        -ttl 30 \
+        -environment dev \
+        -s /docker.sock \
+        -domain docker \
         -name skydns
 
 
