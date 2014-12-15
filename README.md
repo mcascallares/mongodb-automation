@@ -9,9 +9,13 @@ The image provides a pre-installed and configured MMS Automation agent.
 Examples
 --------
 
-### Running a single instance
+### Running a single container
+
+Lunch a single mongodb-automation container where we are going to deploy one or more mongod instances
 
     docker run -d \
+        --name my_mongod \
+        --hostname mymongod \
         -p 27017:27017 \
         -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
@@ -20,14 +24,16 @@ Examples
         --mmsApiKey=<your_mms_api_key>
 
 
-### Running a 3-nodes replica set
-
-To run a replica set you need some discovery mechanism to provide connectivity among mongod process. A common approach is to use DNS services and logical names for containers.
-
-In this example I will use [Skydock](https://github.com/crosbymichael/skydock) to provide DNS resolution for my mongod instances. The DNS server will be listening on 172.17.42.1:53.
+From MMS interface configure the container with the desired options
 
 
-    # running DNS container
+### Running a 3-nodes replica set across multiple containers
+
+To run across multiple containers you need some discovery mechanism to provide connectivity among docker containers. A common approach is to use logical names and DNS.
+
+In this example I will use [Skydock](https://github.com/crosbymichael/skydock) to provide DNS resolution. The DNS server will be listening on 172.17.42.1:53.
+
+    # running a DNS container with Skydns
     docker run -d
         -p 172.17.42.1:53:53/udp
         --name skydns crosbymichael/skydns
@@ -35,7 +41,7 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
         -domain docker
 
 
-    # running Skydock container to publish DNS updates with events containers
+    # running Skydock container to hook docker events with DNS updates
     docker run -d
         -v /var/run/docker.sock:/docker.sock
         --name skydock crosbymichael/skydock
@@ -46,7 +52,7 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
         -name skydns
 
 
-    # running mongod processes
+    # running 3 mongod processes in 3 different containers, one agent per container.
     docker run -d \
         --name mongod1 \
         -h mongod1.mongodb-automation.dev.docker \
