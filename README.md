@@ -12,7 +12,6 @@ Examples
 ### Running a single instance
 
     docker run -d \
-        --name my_mongodb_instance \
         -p 27017:27017 \
         -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
@@ -89,5 +88,5 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
 Misc
 ----
 
-    * [Docker and certificate issues](http://blog.bwhaley.com/ca-certificates-for-docker-busybox-containers)
+- [Docker and certificate issues](http://blog.bwhaley.com/ca-certificates-for-docker-busybox-containers)
 
