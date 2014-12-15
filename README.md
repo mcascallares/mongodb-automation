@@ -14,8 +14,6 @@ Examples
 Lunch a single mongodb-automation container where we are going to deploy one or more mongod instances
 
     docker run -d \
-        --name my_mongod \
-        --hostname mymongod \
         -p 27017:27017 \
         -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
