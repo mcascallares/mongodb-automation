@@ -1,9 +1,7 @@
 mongodb-automation
 ==================
 
-mongodb-automation is a docker image that allows you to deploy MongoDB instances using [MMS Automation service](https://mms.mongodb.com).
-
-The image provides a pre-installed and configured MMS Automation agent.
+mongodb-automation is a docker image that allows you to deploy MongoDB instances using [MMS Automation service](https://mms.mongodb.com). The image provides a pre-installed and configured MMS Automation agent.
 
 [See image in Docker Hub](https://registry.hub.docker.com/u/mcascallares/mongodb-automation/)
 
