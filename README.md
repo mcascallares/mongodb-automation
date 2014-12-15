@@ -11,7 +11,7 @@ Examples
 
 ### Running a single container
 
-Lunch a single mongodb-automation container where we are going to deploy one or more mongod instances
+Launch a single mongodb-automation container where we are going to deploy one or more mongod instances
 
     docker run -d \
         -p 27017:27017 \
