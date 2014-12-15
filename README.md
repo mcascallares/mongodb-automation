@@ -88,6 +88,65 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
 
 
 
+### Using fig
+
+We can deploy the same idea described in the point below but using a single entry point with
+[fig](http://www.fig.sh)
+
+
+    skydns:
+        image: crosbymichael/skydns
+        command: -nameserver 8.8.8.8:53 -domain docker
+        ports:
+            - 172.17.42.1:53:53/udp
+        dns: 172.17.42.1
+
+    skydock:
+        image: crosbymichael/skydock
+        command: -ttl 30 -environment dev -s /docker.sock -domain docker -name skydns
+        volumes:
+            - /var/run/docker.sock:/docker.sock
+
+    mongod1:
+        image: mcascallares/mongodb-automation:latest
+        command: >
+            --mmsBaseUrl https://mms.mongodb.com
+            --mmsGroupId=548e5b9ce4b04a60f3826b77
+            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+        hostname: mongod1.mongodb-automation.dev.docker
+        ports:
+            - 27017:2700
+        volumes:
+            - /etc/ssl/certs:/etc/ssl/certs
+        dns: 172.17.42.1
+
+    mongod2:
+        image: mcascallares/mongodb-automation:latest
+        command: >
+            --mmsBaseUrl https://mms.mongodb.com
+            --mmsGroupId=548e5b9ce4b04a60f3826b77
+            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+        hostname: mongod2.mongodb-automation.dev.docker
+        ports:
+            - 27018:2700
+        volumes:
+            - /etc/ssl/certs:/etc/ssl/certs
+        dns: 172.17.42.1
+
+    mongod3:
+        image: mcascallares/mongodb-automation:latest
+        command: >
+            --mmsBaseUrl https://mms.mongodb.com
+            --mmsGroupId=548e5b9ce4b04a60f3826b77
+            --mmsApiKey=7d2950efa4bee6e19ed8c754f4020e06
+        hostname: mongod3.mongodb-automation.dev.docker
+        ports:
+            - 27019:2700
+        volumes:
+            - /etc/ssl/certs:/etc/ssl/certs
+        dns: 172.17.42.1
+
+
 
 Misc
 ----
