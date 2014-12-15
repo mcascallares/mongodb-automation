@@ -5,6 +5,8 @@ mongodb-automation is a docker image that allows you to deploy MongoDB instances
 
 The image provides a pre-installed and configured MMS Automation agent.
 
+[See image in Docker Hub](https://registry.hub.docker.com/u/mcascallares/mongodb-automation/)
+
 
 Examples
 --------
@@ -23,6 +25,8 @@ Lunch a single mongodb-automation container where we are going to deploy one or 
 
 
 From MMS interface configure the container with the desired options
+
+
 
 
 ### Running a 3-nodes replica set across multiple containers
@@ -88,6 +92,8 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
 
 
 
+
+
 ### Using fig
 
 We can deploy the same idea described in the point below but using a single entry point with
@@ -148,8 +154,8 @@ We can deploy the same idea described in the point below but using a single entr
 
 
 
+
 Misc
 ----
 
 - [Docker and certificate issues](http://blog.bwhaley.com/ca-certificates-for-docker-busybox-containers)
-
