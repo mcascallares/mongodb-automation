@@ -4,8 +4,8 @@ MAINTAINER Matias Cascallares "matiascas@gmail.com"
 ENV REFRESHED_AT 2014-12-16
 ENV AGENT_PACKAGE mongodb-mms-automation-agent-manager_1.4.2.783-1_amd64.deb
 
-RUN apt-get update && \
-    apt-get install \
+RUN apt-get -qqy update && \
+    apt-get install -qqy \
         ca-certificates \
         libsasl2-2
 
