@@ -15,9 +15,8 @@ Launch a single mongodb-automation container where we are going to deploy one or
 
     docker run -d \
         -p 27017:27017 \
-        -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
-        --mmsBaseUrl https://mms.mongodb.com \
+        --mmsBaseUrl=https://mms.mongodb.com \
         --mmsGroupId=<your_mms_group_id> \
         --mmsApiKey=<your_mms_api_key>
 
@@ -58,9 +57,8 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
         -h mongod1.mongodb-automation.dev.docker \
         --dns 172.17.42.1 \
         -p 27017:27000 \
-        -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
-        --mmsBaseUrl https://mms.mongodb.com \
+        --mmsBaseUrl=https://mms.mongodb.com \
         --mmsGroupId=<your_mms_group_id> \
         --mmsApiKey=<your_mms_api_key>
 
@@ -70,9 +68,8 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
         -h mongod2.mongodb-automation.dev.docker \
         --dns 172.17.42.1 \
         -p 27018:27000 \
-        -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
-        --mmsBaseUrl https://mms.mongodb.com \
+        --mmsBaseUrl=https://mms.mongodb.com \
         --mmsGroupId=<your_group_id> \
         --mmsApiKey=<your_mms_api_key>
 
@@ -82,9 +79,8 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
         -h mongod3.mongodb-automation.dev.docker \
         --dns 172.17.42.1 \
         -p 27019:27000 \
-        -v '/etc/ssl/certs:/etc/ssl/certs' \
         mcascallares/mongodb-automation:latest \
-        --mmsBaseUrl https://mms.mongodb.com \
+        --mmsBaseUrl=https://mms.mongodb.com \
         --mmsGroupId=<your_group_id> \
         --mmsApiKey=<your_mms_api_key>
 
@@ -114,46 +110,32 @@ We can deploy the same idea described in the point below but using a single entr
     mongod1:
         image: mcascallares/mongodb-automation:latest
         command: >
-            --mmsBaseUrl https://mms.mongodb.com
+            --mmsBaseUrl=https://mms.mongodb.com
             --mmsGroupId=<your_mms_group_id>
             --mmsApiKey=<your_mms_api_key>
         hostname: mongod1.mongodb-automation.dev.docker
         ports:
             - 27017:2700
-        volumes:
-            - /etc/ssl/certs:/etc/ssl/certs
         dns: 172.17.42.1
 
     mongod2:
         image: mcascallares/mongodb-automation:latest
         command: >
-            --mmsBaseUrl https://mms.mongodb.com
+            --mmsBaseUrl=https://mms.mongodb.com
             --mmsGroupId=<your_mms_group_id>
             --mmsApiKey=<your_mms_api_key>
         hostname: mongod2.mongodb-automation.dev.docker
         ports:
             - 27018:2700
-        volumes:
-            - /etc/ssl/certs:/etc/ssl/certs
         dns: 172.17.42.1
 
     mongod3:
         image: mcascallares/mongodb-automation:latest
         command: >
-            --mmsBaseUrl https://mms.mongodb.com
+            --mmsBaseUrl=https://mms.mongodb.com
             --mmsGroupId=<your_mms_group_id>
             --mmsApiKey=<your_mms_api_key>
         hostname: mongod3.mongodb-automation.dev.docker
         ports:
             - 27019:2700
-        volumes:
-            - /etc/ssl/certs:/etc/ssl/certs
         dns: 172.17.42.1
-
-
-
-
-Misc
-----
-
-- [Docker and certificate issues](http://blog.bwhaley.com/ca-certificates-for-docker-busybox-containers)

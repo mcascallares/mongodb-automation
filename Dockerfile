@@ -1,20 +1,19 @@
 FROM ubuntu:14.04
 MAINTAINER Matias Cascallares "matiascas@gmail.com"
 
-ENV REFRESHED_AT 2014-12-15
+ENV REFRESHED_AT 2014-12-16
 ENV AGENT_PACKAGE mongodb-mms-automation-agent-manager_1.4.2.783-1_amd64.deb
 
 RUN apt-get -qqy update
-
-# dependecy required by MMS monitoring agent
-RUN apt-get install -qqy libsasl2-2
+RUN apt-get install -qqy ca-certificates \
+    libsasl2-2
 
 # MMS automation
 VOLUME /var/lib/mongodb-mms-automation
 ADD setup/${AGENT_PACKAGE} /root/
 RUN dpkg -i /root/${AGENT_PACKAGE}
 
-# MongoDB data folder
+# MongoDB data volume
 VOLUME /data
 RUN chown mongodb:mongodb /data
 
