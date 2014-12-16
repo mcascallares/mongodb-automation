@@ -3,7 +3,7 @@ mongodb-automation
 
 mongodb-automation is a docker image that allows you to deploy MongoDB instances using [MMS Automation service](https://mms.mongodb.com). The image provides a pre-installed and configured MMS Automation agent.
 
-[See image in Docker Hub](https://registry.hub.docker.com/u/mcascallares/mongodb-automation/)
+[See image in Docker Hub](https://registry.hub.docker.com/u/mcascallares/mongodb-automation/).
 
 
 Examples
@@ -11,7 +11,7 @@ Examples
 
 ### Running a single container
 
-Launch a single mongodb-automation container where we are going to deploy one or more mongod instances
+Launch a single mongodb-automation container where we are going to deploy one or more mongod instances:
 
     docker run -d \
         -p 27017:27017 \
@@ -21,7 +21,7 @@ Launch a single mongodb-automation container where we are going to deploy one or
         --mmsApiKey=<your_mms_api_key>
 
 
-From MMS interface configure the container with the desired options
+From the MMS interface configure MongoDB to deploy with the desired options.
 
 
 
@@ -90,8 +90,7 @@ In this example I will use [Skydock](https://github.com/crosbymichael/skydock) t
 
 ### Using fig
 
-We can deploy the same idea described in the point below but using a single entry point with
-[fig](http://www.fig.sh)
+We can deploy the same idea described in the point below but using a single entry point with [fig](http://www.fig.sh):
 
 
     skydns:
