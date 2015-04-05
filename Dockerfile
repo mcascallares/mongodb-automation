@@ -1,8 +1,8 @@
 FROM ubuntu:14.04
 MAINTAINER Matias Cascallares "matiascas@gmail.com"
 
-ENV REFRESHED_AT 2014-12-16
-ENV AGENT_PACKAGE mongodb-mms-automation-agent-manager_1.4.2.783-1_amd64.deb
+ENV REFRESHED_AT 2015-04-05
+ENV AGENT_PACKAGE mongodb-mms-automation-agent-manager_1.8.0.1034-1_amd64.deb 
 
 RUN apt-get -qqy update && \
     apt-get install -qqy \
